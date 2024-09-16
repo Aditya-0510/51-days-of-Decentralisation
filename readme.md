@@ -1,1 +1,1 @@
-This is the start of my journeys towards Web3
+This is the start of my journey towards Web3
