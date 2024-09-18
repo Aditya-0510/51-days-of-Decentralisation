@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT 
 
 pragma solidity ^0.8.26;
-
 import "./SimpleStorage.sol"; 
-
 contract StorageFactory {
     
     SimpleStorage[] public simpleStorageArray;
@@ -14,8 +12,6 @@ contract StorageFactory {
     }
     
     function sfStore(uint256 _simpleStorageIndex, uint256 _simpleStorageNumber) public {
-        // Address 
-        // ABI 
         // SimpleStorage(address(simpleStorageArray[_simpleStorageIndex])).store(_simpleStorageNumber);
         simpleStorageArray[_simpleStorageIndex].store(_simpleStorageNumber);
     }
@@ -24,4 +20,5 @@ contract StorageFactory {
         // return SimpleStorage(address(simpleStorageArray[_simpleStorageIndex])).retrieve();
         return simpleStorageArray[_simpleStorageIndex].retrieve();
     }
+    
 }
