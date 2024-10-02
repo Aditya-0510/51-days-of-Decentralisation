@@ -13,6 +13,9 @@ contract Mapping {
         // Update the value at this address
         myMap[_addr] = _i;
     }
+
+
+    // function
     function remove(address _addr) public {
         // Reset the value to the default value.
         delete myMap[_addr];
