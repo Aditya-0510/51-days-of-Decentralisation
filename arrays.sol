@@ -29,6 +29,8 @@ contract Array {
     function getLength() public view returns (uint256) {
         return arr.length;
     }
+
+    //adding a function
     function remove(uint256 index) public {
         // Delete does not change the array length.
         // It resets the value at index to it's default value,
