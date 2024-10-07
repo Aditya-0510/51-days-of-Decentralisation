@@ -44,4 +44,16 @@ library LibClock {
     }
 }
 
+// Clock library without user defined value type
+library LibClockBasic {
+    function wrap(uint64 _duration, uint64 _timestamp)
+        internal
+        pure
+        returns (uint128 clock)
+    {
+        assembly {
+            clock := or(shl(0x40, _duration), _timestamp)
+        }
+    }
+}
 
