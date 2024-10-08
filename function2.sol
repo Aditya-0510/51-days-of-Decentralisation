@@ -32,6 +32,7 @@ library LibClock {
             duration_ := shr(0x40, _clock)
         }
     }
+    //creating a function for timestamp
 
     function timestamp(Clock _clock)
         internal
