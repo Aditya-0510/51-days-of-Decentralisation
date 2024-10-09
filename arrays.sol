@@ -16,6 +16,7 @@ contract Array {
     function getArr() public view returns (uint256[] memory) {
         return arr;
     }
+    //function to push
     function push(uint256 i) public {
         // Append to array
         // This will increase the array length by 1.
