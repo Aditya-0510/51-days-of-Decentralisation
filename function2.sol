@@ -58,3 +58,31 @@ library LibClockBasic {
     }
 }
 
+
+contract Examples {
+    function example_no_uvdt() external view {
+        // Without UDVT
+        uint128 clock;
+        uint64 d = 1;
+        uint64 t = uint64(block.timestamp);
+        clock = LibClockBasic.wrap(d, t);
+        // Oops! wrong order of inputs but still compiles
+        clock = LibClockBasic.wrap(t, d);
+    }
+
+    function example_uvdt() external view {
+        // Turn value type into user defined value type
+        Duration d = Duration.wrap(1);
+        Timestamp t = Timestamp.wrap(uint64(block.timestamp));
+        // Turn user defined value type back into primitive value type
+        uint64 d_u64 = Duration.unwrap(d);
+        uint64 t_u54 = Timestamp.unwrap(t);
+
+        // LibClock example
+        Clock clock = Clock.wrap(0);
+        clock = LibClock.wrap(d, t);
+        // Oops! wrong order of inputs
+        // This will not compile
+        // clock = LibClock.wrap(t, d);
+    }
+}
