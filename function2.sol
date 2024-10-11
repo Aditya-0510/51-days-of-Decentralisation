@@ -60,6 +60,7 @@ library LibClockBasic {
 
 
 contract Examples {
+    //function for showing contract
     function example_no_uvdt() external view {
         // Without UDVT
         uint128 clock;
