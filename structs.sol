@@ -9,6 +9,7 @@ struct Todo {
 
 Todo[] public todos;
 
+    //function to show the use of structs
     function create(string calldata _text) public {
         // 3 ways to initialize a struct
         // - calling it like a function
