@@ -25,3 +25,18 @@ Todo[] public todos;
 
         todos.push(todo);
     }
+
+    function get(uint256 _index)
+        public
+        view
+        returns (string memory text, bool completed)
+    {
+        Todo storage todo = todos[_index];
+        return (todo.text, todo.completed);
+    }
+
+    // update text
+    function updateText(uint256 _index, string calldata _text) public {
+        Todo storage todo = todos[_index];
+        todo.text = _text;
+    }
