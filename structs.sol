@@ -26,6 +26,7 @@ Todo[] public todos;
         todos.push(todo);
     }
 
+    //function to show the use of structs 
     function get(uint256 _index)
         public
         view
