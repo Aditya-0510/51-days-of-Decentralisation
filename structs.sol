@@ -37,6 +37,7 @@ Todo[] public todos;
     }
 
     // update text
+    //and create a function for it
     function updateText(uint256 _index, string calldata _text) public {
         Todo storage todo = todos[_index];
         todo.text = _text;
