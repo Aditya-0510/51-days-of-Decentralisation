@@ -66,3 +66,24 @@ contract ReentrancyGuard {
         msg.sender.call(b);
     }
 }
+contract ReentrancyGuardTransient {
+    bytes32 constant SLOT = 0;
+
+    modifier lock() {
+        assembly {
+            if tload(SLOT) { revert(0, 0) }
+            tstore(SLOT, 1)
+        }
+        _;
+        assembly {
+            tstore(SLOT, 0)
+        }
+    }
+
+    // 21887 gas
+    function test() external lock {
+        // Ignore call error
+        bytes memory b = "";
+        msg.sender.call(b);
+    }
+}
