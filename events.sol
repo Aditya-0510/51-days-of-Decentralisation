@@ -36,3 +36,28 @@ contract EventDrivenArchitecture {
         emit TransferConfirmed(msg.sender, address(this), 0);
     }
 }
+
+contract EventSubscription {
+    event LogTransfer(address indexed from, address indexed to, uint256 value);
+
+    mapping(address => bool) public subscribers;
+    address[] public subscriberList;
+
+    function subscribe() public {
+        require(!subscribers[msg.sender], "Already subscribed");
+        subscribers[msg.sender] = true;
+        subscriberList.push(msg.sender);
+    }
+
+    function unsubscribe() public {
+        require(subscribers[msg.sender], "Not subscribed");
+        subscribers[msg.sender] = false;
+        for (uint256 i = 0; i < subscriberList.length; i++) {
+            if (subscriberList[i] == msg.sender) {
+                subscriberList[i] = subscriberList[subscriberList.length - 1];
+                subscriberList.pop();
+                break;
+            }
+        }
+    }
+}
